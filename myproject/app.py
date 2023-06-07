@@ -3,8 +3,8 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 
 app = Flask(__name__)
-app.secret_key = '497732503295-1tpv5tsjlve97a0r1nbd6tik766kjmdc.apps.googleusercontent.com'  # Set a secret key for session management
-CLIENT_ID = 'your_client_id_here'  # Replace with your actual client ID
+app.secret_key = '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'  # Set a secret key for session management
+CLIENT_ID = '497732503295-1tpv5tsjlve97a0r1nbd6tik766kjmdc.apps.googleusercontent.com'  # Replace with your actual client ID
 
 @app.route('/')
 def login():
