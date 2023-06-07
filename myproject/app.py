@@ -1,9 +1,10 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request, session
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
 app = Flask(__name__)
 app.secret_key = '497732503295-1tpv5tsjlve97a0r1nbd6tik766kjmdc.apps.googleusercontent.com'  # Set a secret key for session management
+CLIENT_ID = 'your_client_id_here'  # Replace with your actual client ID
 
 @app.route('/')
 def login():
@@ -54,12 +55,12 @@ def student_status_selection():
         # Store the student status information in the session
         session['student_status'] = student_status
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('dashboard_view'))
 
     return render_template('student_status.html')
 
 @app.route('/dashboard')
-def dashboard():
+def dashboard_view():
     # Retrieve user information from the session
     user_email = session.get('user_email')
     user_name = session.get('user_name')
@@ -70,3 +71,4 @@ def dashboard():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
